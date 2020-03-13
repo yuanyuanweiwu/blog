@@ -6,8 +6,8 @@ import React from "react";
 const Header = () => {
   return (
     <div className="header">
-      <div className='header-cneter'>
-        <Row type="flex" justify="center">
+      <div className='header-center'>
+        <Row type="flex" justify="space-between">
           <Col  xs={24} sm={24} md={10} lg={15} xl={12}>
             <span className="header-logo">沅沅威武</span>
             <span className="header-txt">简单而又枯燥的博客</span>
