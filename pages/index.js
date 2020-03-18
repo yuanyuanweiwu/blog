@@ -8,6 +8,7 @@ import Header from './../components/Header';
 import Author from './../components/Author';
 import Advert from './../components/Advert'
 import Footer from './../components/Footer';
+import Link from 'next/link'
 import axios from 'axios'
 import { resolveOnChange } from 'antd/lib/input/Input'
 const Home = (list) => {
@@ -28,8 +29,10 @@ const Home = (list) => {
               dataSource={myList}
               renderItem={item => (
                 <List.Item>
-                  <div className='list-title'>
-                    {item.title}
+                  <div className="list-title">
+                    <Link href={{ pathname: '/detailed', query: { id: item.id } }}>
+                      <a>{item.title}</a>
+                    </Link>
                   </div>
                   <div className='list-icon'>
                     <span><CalendarFilled />{item.addTime}</span>
@@ -52,9 +55,9 @@ const Home = (list) => {
   )
 }
 
-Home.getInitialProps= async()=>{
-  const promise=new Promise((resolve,reject)=>{
-    axios('http://127.0.0.1:7001/default/getArticleList').then(res=>{
+Home.getInitialProps = async () => {
+  const promise = new Promise((resolve, reject) => {
+    axios('http://127.0.0.1:7001/default/getArticleList').then(res => {
       resolve(res.data)
     })
   })
