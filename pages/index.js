@@ -11,6 +11,8 @@ import Footer from './../components/Footer';
 import Link from 'next/link'
 import axios from 'axios'
 import { resolveOnChange } from 'antd/lib/input/Input'
+import servicePath from './../config/apiUrl';
+
 const Home = (list) => {
   const [myList, setMylist] = useState(list.data)
 
@@ -57,7 +59,7 @@ const Home = (list) => {
 
 Home.getInitialProps = async () => {
   const promise = new Promise((resolve, reject) => {
-    axios('http://127.0.0.1:7001/default/getArticleList').then(res => {
+    axios(servicePath.getArticleList).then(res => {
       resolve(res.data)
     })
   })

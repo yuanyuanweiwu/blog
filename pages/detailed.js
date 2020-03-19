@@ -12,6 +12,7 @@ import marked from 'marked'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/monokai-sublime.css'
 import Tocify from './../components/tocify.tsx';
+import servicePath from './../config/apiUrl';
 
 const Detailed = (props) => {
   const renderer = new marked.Renderer();
@@ -95,7 +96,7 @@ const Detailed = (props) => {
 Detailed.getInitialProps = async (context) => {
   let id = context.query.id
   const promise = new Promise((resolve) => {
-    axios('http://127.0.0.1:7001/default/getArticleById/' + id).then(res => {
+    axios(servicePath.getArticleById + id).then(res => {
       console.log(res.data.data[0])
       resolve(res.data.data[0])
     })
