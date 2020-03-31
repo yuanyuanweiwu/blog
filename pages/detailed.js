@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Head from "next/head";
-import { Row, Col, Breadcrumb, Affix } from "antd";
+import { Row, Col, Breadcrumb, Affix, Skeleton } from "antd";
 import { CalendarOutlined, FolderOutlined, FireOutlined } from '@ant-design/icons'
 import axios from 'axios'
 import Header from "../components/Header";
@@ -15,9 +15,10 @@ import Tocify from './../components/tocify.tsx';
 import servicePath from './../config/apiUrl';
 
 const Detailed = (props) => {
+  const [loading, setLoading] = useState(true)
   const renderer = new marked.Renderer();
-  const tocify=new Tocify()
-  renderer.heading= function(text, level, raw) {
+  const tocify = new Tocify()
+  renderer.heading = function (text, level, raw) {
     const anchor = tocify.add(text, level);
     return `<a id="${anchor}" href="#${anchor}" class="anchor-fix"><h${level}>${text}</h${level}></a>\n`;
   };
@@ -63,7 +64,7 @@ const Detailed = (props) => {
                 <span>
                   <CalendarOutlined /> 2019-06-28
                 </span>
-                <span>
+                <span >
                   <FolderOutlined /> 视频教程
                 </span>
                 <span>
@@ -79,12 +80,12 @@ const Detailed = (props) => {
           <Author />
           <Advert />
           <Affix offsetTop={5}>
-            <div className="detailed-nav comm-box">
-              <div className="nav-title">文章目录</div>
-              <div className='toc-list'>
-                {tocify&&tocify.render()}
+          <div className="detailed-nav comm-box" style={{ width: '100%', margin: '.6rem 0 0 .6rem' }}>
+                <div className="nav-title">文章目录</div>
+                <div className='toc-list'>
+                  {tocify && tocify.render()}
+                </div>
               </div>
-            </div>
           </Affix>
         </Col>
       </Row>
@@ -94,14 +95,20 @@ const Detailed = (props) => {
 };
 
 Detailed.getInitialProps = async (context) => {
-  let id = context.query.id
-  const promise = new Promise((resolve) => {
-    axios(servicePath.getArticleById + id).then(res => {
-      console.log(res.data.data[0])
-      resolve(res.data.data[0])
+  try {
+    let id = context.query.id
+    const promise = new Promise((resolve) => {
+      axios(servicePath.getArticleById + id).then(res => {
+        console.log(res.data.data[0])
+        resolve(res.data.data[0])
+      })
     })
-  })
-  return await promise
+
+    return await promise
+  } catch (error) {
+    console.log(error)
+  }
+
 }
 
 export default Detailed;

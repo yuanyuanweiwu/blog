@@ -12,8 +12,28 @@ import Link from 'next/link'
 import axios from 'axios'
 import { resolveOnChange } from 'antd/lib/input/Input'
 import servicePath from './../config/apiUrl';
+import marked from 'marked'
+import hljs from "highlight.js";
+import 'highlight.js/styles/monokai-sublime.css';
 
 const Home = (list) => {
+  const renderer = new marked.Renderer();
+  marked.setOptions({
+    renderer: renderer,
+    gfm: true,
+    pedantic: false,
+    sanitize: false,
+    tables: true,
+    breaks: false,
+    smartLists: true,
+    smartypants: false,
+    sanitize: false,
+    xhtml: false,
+    highlight: function (code) {
+      return hljs.highlightAuto(code).value;
+    }
+
+  });
   const [myList, setMylist] = useState(list.data)
 
   return (
@@ -41,7 +61,7 @@ const Home = (list) => {
                     <span><FolderFilled />{item.introduce}</span>
                     <span><FireFilled />{item.view_count}人</span>
                   </div>
-                  <div className="list-context">{item.content}</div>
+                  <div className="list-context" dangerouslySetInnerHTML={{ __html: marked(item.introduce) }} />
                 </List.Item>
               )}
             />

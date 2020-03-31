@@ -86,3 +86,6 @@ iframe{
 .ant-anchor-wrapper{
   padding: 5px !important;
 }
+.ant-skeleton{
+  padding-left: .6rem;
+}

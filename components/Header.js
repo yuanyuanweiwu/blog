@@ -24,7 +24,7 @@ const Header = () => {
     if (e.key == 1) {
       Router.push('/index')
     } else  if (e.key == 2) {
-      Router.push('/list')
+      Router.push('/list?id=' + e.key)
     }else{
       Router.push('/life')
     }
