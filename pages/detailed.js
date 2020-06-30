@@ -40,7 +40,7 @@ const Detailed = (props) => {
   return (
     <div>
       <Head>
-        <title>detailed</title>
+        <title>沅沅威武</title>
       </Head>
       <Header />
       <Row className="comm-main" type="flex" justify="center">
@@ -52,13 +52,10 @@ const Detailed = (props) => {
                   <a href="/">首页</a>
                 </Breadcrumb.Item>
                 <Breadcrumb.Item>文章列表</Breadcrumb.Item>
-                <Breadcrumb.Item>xxxx</Breadcrumb.Item>
+                <Breadcrumb.Item> JS高程读书笔记</Breadcrumb.Item>
               </Breadcrumb>
             </div>
             <div>
-              <div className="detailed-title">
-                JS高程读书笔记
-              </div>
 
               <div className="list-icon center">
                 <span>

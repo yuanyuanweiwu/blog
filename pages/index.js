@@ -38,7 +38,7 @@ const Home = list => {
   return (
     <div>
       <Head>
-        <title>Home</title>
+        <title>沅沅威武</title>
       </Head>
       <Header />
       <Row className="comm-main" type="flex" justify="center">

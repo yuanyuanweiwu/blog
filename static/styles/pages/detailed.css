@@ -89,3 +89,6 @@ iframe{
 .ant-skeleton{
   padding-left: .6rem;
 }
+.anchor-fix h1{
+  text-align: center;
+}
