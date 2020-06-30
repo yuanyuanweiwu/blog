@@ -9,9 +9,9 @@ const Author = () => {
    <div>
     <Avatar size={100} src='../static/imgs/1.jpg' />
    </div>
-   <div className='author-introduction'>
-    <div className="author-logo">沅沅威武</div>
-    光头程序员，专注于WEB和移动前端开发。要录1000集免费前端视频的傻X。此地维权无门，此时无能为力，此心随波逐流
+   <div className='author-introduction' style={{textAlign:'center'}}>
+    <div className="author-logo" >沅沅威武</div>
+   无名小前端。专业切图狗
    <Divider>社交账号</Divider>
     <div className='social-connect'>
      <Avatar size={28} icon={<GithubOutlined />} className='account' />

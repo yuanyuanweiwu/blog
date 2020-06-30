@@ -98,7 +98,7 @@ Detailed.getInitialProps = async (context) => {
   try {
     let id = context.query.id
     const promise = new Promise((resolve) => {
-      axios(servicePath.getArticleById + id).then(res => {
+      axios('/default/getArticleById/' + id).then(res => {
         console.log(res.data.data[0])
         resolve(res.data.data[0])
       })
