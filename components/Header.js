@@ -1,37 +1,40 @@
 import "../static/styles/components/header.css";
 import { Row, Col, Menu } from "antd";
-import { HomeOutlined, CommentOutlined, VideoCameraOutlined } from '@ant-design/icons'
+import {
+  HomeOutlined,
+  CommentOutlined,
+  VideoCameraOutlined,
+} from "@ant-design/icons";
 import React, { useEffect, useState } from "react";
-import Router from 'next/router'
-import servicePath from './../config/apiUrl';
-import axios from 'axios'
+import Router from "next/router";
+import servicePath from "./../config/apiUrl";
+import axios from "axios";
 
 const Header = () => {
-  const [navArray, setNavArray] = useState([])
+  const [navArray, setNavArray] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios('/default/getTypeInfo').then((res) => {
-
-        return res.data.data
-      })
-      setNavArray(result)
-    }
-    fetchData()
-  }, [])
+      const result = await axios("/default/getTypeInfo").then((res) => {
+        return res.data.data;
+      });
+      setNavArray(result);
+    };
+    fetchData();
+  }, []);
 
   const handleClick = (e) => {
     if (e.key == 1) {
-      Router.push('/index')
-    } else  if (e.key == 2) {
-      Router.push('/list?id=' + e.key)
-    }else{
-      Router.push('/life')
+      Router.push("/index");
+    } else if (e.key == 2) {
+      Router.push("/list?id=" + e.key);
+    } else {
+      // Router.push("/life");
     }
-  }
+  };
   return (
     <div className="header">
-      <div className='header-center'>
+      <div className="header-center">
         <Row type="flex" justify="space-between">
           <Col xs={24} sm={24} md={10} lg={15} xl={12}>
             <span className="header-logo">沅沅威武</span>
@@ -42,20 +45,19 @@ const Header = () => {
               <Menu.Item key={1}>
                 <HomeOutlined />
                 首页
-            </Menu.Item>
-              <Menu.Item key={2}>
+              </Menu.Item>
+              <Menu.Item key={8}>
                 <VideoCameraOutlined />
-                视频
-            </Menu.Item>
-              <Menu.Item key={3}>
+                文章
+              </Menu.Item>
+              <Menu.Item key={10}>
                 <CommentOutlined />
                 生活
-            </Menu.Item>
+              </Menu.Item>
             </Menu>
           </Col>
         </Row>
       </div>
-
     </div>
   );
 };

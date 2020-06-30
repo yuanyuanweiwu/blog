@@ -51,24 +51,24 @@ const Detailed = (props) => {
                 <Breadcrumb.Item>
                   <a href="/">首页</a>
                 </Breadcrumb.Item>
-                <Breadcrumb.Item>视频列表</Breadcrumb.Item>
+                <Breadcrumb.Item>文章列表</Breadcrumb.Item>
                 <Breadcrumb.Item>xxxx</Breadcrumb.Item>
               </Breadcrumb>
             </div>
             <div>
               <div className="detailed-title">
-                React实战视频教程-技术胖Blog开发(更新08集)
+                JS高程读书笔记
               </div>
 
               <div className="list-icon center">
                 <span>
-                  <CalendarOutlined /> 2019-06-28
+                  <CalendarOutlined /> 2020-06-30
                 </span>
                 <span >
                   <FolderOutlined /> 视频教程
                 </span>
                 <span>
-                  <FireOutlined /> 5498人
+                  <FireOutlined /> 1人
                 </span>
               </div>
 
@@ -98,7 +98,7 @@ Detailed.getInitialProps = async (context) => {
   try {
     let id = context.query.id
     const promise = new Promise((resolve) => {
-      axios('/default/getArticleById/' + id).then(res => {
+      axios(servicePath.getArticleById + id).then(res => {
         console.log(res.data.data[0])
         resolve(res.data.data[0])
       })
