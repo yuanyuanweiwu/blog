@@ -82,7 +82,7 @@ const Home = list => {
         </Col>
         <Col className="comm-right" xs={0} sm={0} md={6}>
           <Author />
-          <Advert />
+          {/* <Advert /> */}
         </Col>
       </Row>
       <Footer />
