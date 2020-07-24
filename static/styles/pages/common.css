@@ -1,5 +1,7 @@
 body{
  background-color: #e9ecee !important;  
+ background-image: url('../../imgs/back.jpg');
+ background-size: cover;
 }
 .comm-left{
  background-color: #FFF;
