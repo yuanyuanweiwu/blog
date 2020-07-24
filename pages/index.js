@@ -16,7 +16,7 @@ import marked from "marked";
 import hljs from "highlight.js";
 import "highlight.js/styles/monokai-sublime.css";
 
-const Home = list => {
+const Home = (list) => {
   const renderer = new marked.Renderer();
   marked.setOptions({
     renderer: renderer,
@@ -29,9 +29,9 @@ const Home = list => {
     smartypants: false,
     sanitize: false,
     xhtml: false,
-    highlight: function(code) {
+    highlight: function (code) {
       return hljs.highlightAuto(code).value;
-    }
+    },
   });
   const [myList, setMylist] = useState(list.data);
 
@@ -41,50 +41,55 @@ const Home = list => {
         <title>沅沅威武</title>
       </Head>
       <Header />
-      <Row className="comm-main" type="flex" justify="center">
-        <Col className="comm-left" xs={24} sm={24} md={18}>
-          <div>
-            <List
-              header={<div>最新日志</div>}
-              itemLayout="vertical"
-              dataSource={myList}
-              renderItem={item => (
-                <List.Item>
-                  <div className="list-title">
-                    <Link
-                      href={{ pathname: "/detailed", query: { id: item.id } }}
-                    >
-                      <a>{item.title}</a>
-                    </Link>
-                  </div>
-                  <div className="list-icon">
-                    <span>
-                      <CalendarFilled />
-                      {item.addTime}
-                    </span>
-                    <span>
-                      <FolderFilled />
-                      {item.introduce}
-                    </span>
-                    <span>
-                      <FireFilled />
-                      {item.view_count}人
-                    </span>
-                  </div>
-                  <div
-                    className="list-context"
-                    dangerouslySetInnerHTML={{ __html: marked(item.introduce) }}
-                  />
-                </List.Item>
-              )}
-            />
-          </div>
-        </Col>
-        <Col className="comm-right" xs={0} sm={0} md={6}>
-          <Author />
-          {/* <Advert /> */}
-        </Col>
-      </Row>
+      <div className="main">
+        <div className="backimg"></div>
+        <Row className="comm-main" type="flex" justify="center">
+          <Col className="comm-left" xs={24} sm={24} md={18}>
+            <div>
+              <List
+                header={<div>最新日志</div>}
+                itemLayout="vertical"
+                dataSource={myList}
+                renderItem={(item) => (
+                  <List.Item>
+                    <div className="list-title">
+                      <Link
+                        href={{ pathname: "/detailed", query: { id: item.id } }}
+                      >
+                        <a>{item.title}</a>
+                      </Link>
+                    </div>
+                    <div className="list-icon">
+                      <span>
+                        <CalendarFilled />
+                        {item.addTime}
+                      </span>
+                      <span>
+                        <FolderFilled />
+                        {item.introduce}
+                      </span>
+                      <span>
+                        <FireFilled />
+                        {item.view_count}人
+                      </span>
+                    </div>
+                    <div
+                      className="list-context"
+                      dangerouslySetInnerHTML={{
+                        __html: marked(item.introduce),
+                      }}
+                    />
+                  </List.Item>
+                )}
+              />
+            </div>
+          </Col>
+          <Col className="comm-right" xs={0} sm={0} md={6}>
+            <Author />
+            {/* <Advert /> */}
+          </Col>
+        </Row>
+      </div>
       <Footer />
     </div>
   );
@@ -92,15 +97,15 @@ const Home = list => {
 
 Home.getInitialProps = async () => {
   const promise = new Promise((resolve) => {
-    axios(servicePath.getArticleList).then(res => {
-    // axios('/default/getArticleList').then(res => {
+    axios(servicePath.getArticleList).then((res) => {
+      // axios('/default/getArticleList').then(res => {
 
-      resolve(res.data)
-    })
-  }).catch(err=>{
-    console.log(err.message)
-  })
+      resolve(res.data);
+    });
+  }).catch((err) => {
+    console.log(err.message);
+  });
 
-  return await promise
+  return await promise;
 };
 export default Home;

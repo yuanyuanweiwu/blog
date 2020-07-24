@@ -4,7 +4,7 @@ const {createProxyMiddleware} = require('http-proxy-middleware')
 
 const devProxy = {
     '/default': {
-        target: 'http://127.0.0.1:7001', // 端口自己配置合适的
+        target: 'http://129.211.122.170:1080', // 端口自己配置合适的
         changeOrigin: true
     }
     
