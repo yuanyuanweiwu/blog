@@ -77,7 +77,7 @@ const Detailed = (props) => {
           <Author />
           {/* <Advert /> */}
           <Affix offsetTop={5}>
-          <div className="detailed-nav comm-box" style={{ width: '100%', margin: '.6rem 0 0 .6rem' }}>
+          <div className="detailed-nav comm-box" style={{ margin: '.6rem 0 0 .6rem' }}>
                 <div className="nav-title">文章目录</div>
                 <div className='toc-list'>
                   {tocify && tocify.render()}
