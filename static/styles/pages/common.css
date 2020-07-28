@@ -37,7 +37,7 @@ body{
  padding: 0 10px;
 }
 .backimg{
-    background-image: url('https://i0.hdslb.com/bfs/album/d0329d2c568de143389bec84b719f3325f4bb7a6.png');
+    background-image: url('../../imgs/back.jpg');
     background-size: cover;
     background-position: 100% 100%;
     background-repeat: no-repeat;
